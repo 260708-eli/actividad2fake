@@ -7,7 +7,7 @@ Exercises
 3. How would you move the food?
 4. Change the snake to respond to mouse clicks.
 """
-
+from random import choice, randrange
 from random import randrange
 from turtle import *
 
@@ -48,6 +48,12 @@ def move():
     else:
         snake.pop(0)
 
+    directions = [vector(10, 0), vector(-10, 0), vector(0, 10), vector(0, -10)]
+    food_step = choice(directions)
+    next_food = food + food_step
+
+    if inside(next_food):
+        food.move(food_step)
     clear()
 
     for body in snake:
